@@ -11,4 +11,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    @Override
+    public void onBackPressed() {
+        //empty so the user can back button after sign on
+    }
 }
