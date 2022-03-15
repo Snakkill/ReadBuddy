@@ -18,10 +18,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         // Set up the bottom navigation
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         replaceFragment(homeFragment)
-        // Deprecated, look into a different way to do this
+
+        // Deprecated, look into a different way to do this when time permits.
+        // Still functions
         bottomNav.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.menu_home -> replaceFragment(homeFragment)
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
+        // Function responsible for swapping fragments
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
