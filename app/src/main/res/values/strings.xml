@@ -4,5 +4,8 @@
     <string name="your_web_client_id">564058764737-bjd97efetm4k7juq2jeh55nrpicd6ree.apps.googleusercontent.com</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="google_map_key">AIzaSyAvz2IsPs1qT4uBPkFnc5Uyo_67Dpo0uY4</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="home">Home</string>
+    <string name="reading_list">Reading List</string>
 
 </resources>
