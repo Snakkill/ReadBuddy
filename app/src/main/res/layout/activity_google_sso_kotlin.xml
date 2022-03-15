@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Google_SSO">
+    tools:context=".Google_SSO_kotlin">
 
     <Button
-        android:id="@+id/debugBttn"
+        android:id="@+id/loginBttn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="121dp"
-        android:layout_marginBottom="97dp"
-        android:text="Next Page (Debug Button)"
+        android:layout_marginBottom="200dp"
         android:onClick="NextPage"
+        android:text="LogIN"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
