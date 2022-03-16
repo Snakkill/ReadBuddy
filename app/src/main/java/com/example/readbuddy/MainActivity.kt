@@ -2,11 +2,15 @@ package com.example.readbuddy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.Fragment
 import com.example.readbuddy.R
 import com.example.readbuddy.fragments.HomeFragment
 import com.example.readbuddy.fragments.LeaderboardFragment
 import com.example.readbuddy.fragments.ReadingListFragment
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         // Set up the bottom navigation
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         replaceFragment(homeFragment)
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
     }
 
     private fun replaceFragment(fragment: Fragment) {
