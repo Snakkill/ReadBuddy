@@ -13,6 +13,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+
+        android:background="@color/stone_gray"
+        app:itemIconTint="@color/nav_color"
+        app:itemRippleColor="@color/black"
+        app:itemTextColor="@color/nav_color"
         app:menu="@menu/menu" />
         <!-- TODO color scheming -->
 
