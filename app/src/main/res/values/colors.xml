@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Custom colors down below -->
+    <color name="cream">#e1d5c9</color>
+    <color name="stone_gray">#212325</color>
+    <color name="cream_selected">#c3964c</color>
+    <color name="stone_dark">#000000</color>
+
 </resources>
