@@ -15,6 +15,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.example.readbuddy.databinding.ActivityMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.delay
+import kotlin.concurrent.thread
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -25,20 +27,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      var currentLong:Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
-        checkLocation()
 
-        binding = ActivityMapsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+      fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
+          checkLocation()
+    
+
+            super.onCreate(savedInstanceState)
+            binding = ActivityMapsBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+    val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+    mapFragment.getMapAsync(this)
+
     }
     //loads late, will fix with vm
     private fun checkLocation() {
@@ -72,10 +78,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     override fun onMapReady(googleMap: GoogleMap) {
-        fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
-        checkLocation()
-        mMap = googleMap
 
+        mMap = googleMap
         // Add a marker in Sydney and move the camera
         val currentPosition = LatLng(currentLat,currentLong)
         val example1= LatLng(currentLat+0.01,currentLong+0.01)
@@ -87,9 +91,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(example3).title("Target"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentPosition))
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, 15f));
+
     }
 
-        }
+
+
+}
+
+
 
 
 
