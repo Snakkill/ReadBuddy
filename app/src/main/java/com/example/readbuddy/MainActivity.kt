@@ -6,12 +6,17 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.readbuddy.R
 import com.example.readbuddy.fragments.HomeFragment
+import com.example.readbuddy.fragments.LeaderboardAdapter
 import com.example.readbuddy.fragments.LeaderboardFragment
 import com.example.readbuddy.fragments.ReadingListFragment
+import com.example.readbuddy.model.User
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         // Set up the bottom navigation
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         replaceFragment(homeFragment)
@@ -48,5 +55,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         //empty so the user can back button after sign on
+    }
+
+    private fun uploadInfo() {
+        // Create data
     }
 }

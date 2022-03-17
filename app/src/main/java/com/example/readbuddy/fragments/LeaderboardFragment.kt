@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.readbuddy.R
+import com.example.readbuddy.model.User
+import kotlin.random.Random
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +25,7 @@ class LeaderboardFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var leaderboardRecyclerView : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +39,28 @@ class LeaderboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Dummy data to test leaderboard layouts.
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_leaderboard, container, false)
+
+        var screen = inflater.inflate(R.layout.fragment_leaderboard, container, false)
+
+        val data = generateDummyData()
+        val adapter = LeaderboardAdapter(data)
+        leaderboardRecyclerView = screen.findViewById(R.id.rv_leaderboard)
+        leaderboardRecyclerView.layoutManager = LinearLayoutManager(activity)
+        leaderboardRecyclerView.adapter = adapter
+        return screen
+    }
+
+    fun generateDummyData(): ArrayList<User> {
+        val dummyUserList = arrayListOf<User>()
+        for (i in 1..10) {
+            val user = User("John", "Doe")
+            val randomScore: List<Int> = List(10) { Random.nextInt(0, 1000) }
+            user.points = randomScore[0]
+            dummyUserList.add(user)
+        }
+        return dummyUserList
     }
 
     companion object {
