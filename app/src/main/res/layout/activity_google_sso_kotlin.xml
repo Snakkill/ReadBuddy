@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Google_SSO_kotlin">
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="43dp"
+        app:layout_constraintBottom_toTopOf="@+id/loginBttn"
+        app:layout_constraintStart_toStartOf="@+id/loginBttn" />
+
     <Button
         android:id="@+id/loginBttn"
         android:layout_width="wrap_content"
