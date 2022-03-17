@@ -1,12 +1,16 @@
 package com.example.readbuddy.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.SearchView
 import com.example.readbuddy.R
+import com.example.readbuddy.SearchResults
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,7 +41,18 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val screen = inflater.inflate(R.layout.fragment_home, container, false)
+
+        val button = screen.findViewById<Button>(R.id.idBtnSearch)
+        button.setOnClickListener{
+            val searchText = screen.findViewById<EditText>(R.id.searchView)
+            val intent = Intent(activity, SearchResults::class.java).apply {
+                putExtra("query", searchText.text)
+            }
+            startActivity(intent)
+        }
+
+        return screen
     }
 
     companion object {

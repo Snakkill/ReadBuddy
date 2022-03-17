@@ -3,8 +3,8 @@
     package="com.example.readbuddy">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReadBuddy">
-
+        <activity
+            android:name=".SearchResults"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -32,9 +34,7 @@
         <activity
             android:name=".MapsActivity"
             android:exported="true"
-            android:label="@string/title_activity_maps" >
-
-        </activity>
+            android:label="@string/title_activity_maps"></activity>
         <activity
             android:name=".Google_SSO_kotlin"
             android:exported="true">
