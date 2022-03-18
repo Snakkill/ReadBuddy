@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.example.readbuddy.BookInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.readbuddy.R
@@ -89,6 +90,7 @@ class SearchResults : AppCompatActivity() {
                     val description = volumeObj.optString("description")
                     val pageCount = volumeObj.optInt("pageCount")
                     val imageLinks = volumeObj.optJSONObject("imageLinks")
+                    Log.d("API DEBUG", imageLinks.toString())
                     val thumbnail = imageLinks.optString("thumbnail")
                     val previewLink = volumeObj.optString("previewLink")
                     val infoLink = volumeObj.optString("infoLink")

@@ -1,6 +1,7 @@
 package com.example.readbuddy
 
 import android.content.Context
+import android.util.Log
 //import com.example.readbuddy.BookInfo.title
 //import com.example.readbuddy.BookInfo.pageCount
 //import com.example.readbuddy.BookInfo.publishedDate
@@ -16,6 +17,7 @@ import com.example.readbuddy.R
 import com.squareup.picasso.Picasso
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.module.AppGlideModule
 import java.util.ArrayList
 
 class BookAdapter     // create constructor for array list and context.
@@ -29,7 +31,6 @@ class BookAdapter     // create constructor for array list and context.
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-
         // set data to each UI component.
         val bookInfo = bookInfoArrayList[position]
         holder.nameTV.text = bookInfo.title
@@ -37,7 +38,14 @@ class BookAdapter     // create constructor for array list and context.
         holder.pageCountTV.text = "Pages : " + bookInfo.pageCount
         holder.dateTV.text = bookInfo.publishedDate
         //holder.bookIV.setImageIcon(bookInfo.getThumbnail());
-
+        var imageUrl = bookInfo.thumbnail.drop(4)
+        imageUrl = "https$imageUrl"
+        Log.d("API DEBUG", imageUrl)
+        Glide.with(holder.itemView)
+            .load(imageUrl)
+            .placeholder(R.drawable.ic_baseline_error_24)
+            .error(R.drawable.ic_baseline_error_24)
+            .into(holder.bookIV)
         // set image from URL in image view.
         //Picasso.get().load(bookInfo.thumbnail).into(holder.bookIV)
         // R.drawable.icon
