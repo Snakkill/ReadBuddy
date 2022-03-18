@@ -1,22 +1,17 @@
 package com.example.readbuddy
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.SearchView
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.readbuddy.R
 import com.example.readbuddy.fragments.HomeFragment
-import com.example.readbuddy.fragments.LeaderboardAdapter
 import com.example.readbuddy.fragments.LeaderboardFragment
 import com.example.readbuddy.fragments.ReadingListFragment
-import com.example.readbuddy.model.User
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.random.Random
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +46,22 @@ class MainActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu items for use in the action bar
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_logout, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menu_logout_btn -> {
+                Toast.makeText(this, "Logout button pressed", Toast.LENGTH_SHORT).show()
+                // TODO Logout code here
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {
