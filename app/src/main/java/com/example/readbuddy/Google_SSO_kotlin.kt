@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.readbuddy.model.FirebaseUtils
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -32,11 +32,11 @@ class Google_SSO_kotlin : AppCompatActivity() {
 
         // Initialize Firebase Auth
         auth = Firebase.auth
-
+//getString(R.string.default_web_client_id)
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id)) //dont touch
+                .requestIdToken("927504597004-fhcp1m6l4ks45nrcshsc6g56s7gmp4cu.apps.googleusercontent.com") //dont touch
                 .requestEmail()
                 .build()
        val client = GoogleSignIn.getClient(this,gso)
@@ -60,6 +60,27 @@ class Google_SSO_kotlin : AppCompatActivity() {
             return
 
         }
+         user?.let {
+
+             val name = user.displayName
+             val uid = user.uid
+
+             val DB = FirebaseUtils(uid,name,0)
+            val inDB= DB.checkDb(uid) // check if in DB already
+
+             if(inDB==true){
+             DB.StoreFireStore() // store to DB
+                  }
+
+
+             if (name != null) {
+                 Log.v(TAG,name+","+uid)
+             }
+
+         }
+
+
+
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
 
@@ -81,25 +102,7 @@ class Google_SSO_kotlin : AppCompatActivity() {
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
 
-               /* val user = Firebase.auth.currentUser
-                user?.let {
-                    // Name, email address, and profile photo Url
-                    val name = user.displayName
-                    val email = user.email
-                    val photoUrl = user.photoUrl
 
-                    // Check if user's email is verified
-                    val emailVerified = user.isEmailVerified
-
-                    // The user's ID, unique to the Firebase project. Do NOT use this value to
-                    // authenticate with your backend server, if you have one. Use
-                    // FirebaseUser.getToken() instead.
-                    val uid = user.uid
-
-                    if (name != null) {
-                        Log.v(TAG,name)
-                    }
-                }*/
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e)
