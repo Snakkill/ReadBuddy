@@ -5,10 +5,9 @@
     android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/cream"
+    android:background="@drawable/ic_search_outline"
     app:cardBackgroundColor="@color/cream"
     app:cardElevation="10dp"
-    app:cardMaxElevation="12dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
