@@ -41,13 +41,18 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
+
+        // logcat error
+
+        // Key query expected String but value was a android.text.SpannableString
         val screen = inflater.inflate(R.layout.fragment_home, container, false)
 
         val button = screen.findViewById<Button>(R.id.idBtnSearch)
         button.setOnClickListener{
             val searchText = screen.findViewById<EditText>(R.id.searchView)
             val intent = Intent(activity, SearchResults::class.java).apply {
-                putExtra("query", searchText.text)
+                //putExtra("query", searchText.text)
+                putExtra("query", searchText.getText().toString())
             }
             startActivity(intent)
         }

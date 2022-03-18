@@ -15,6 +15,7 @@ import android.widget.ImageView
 import com.example.readbuddy.R
 import com.squareup.picasso.Picasso
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import java.util.ArrayList
 
 class BookAdapter     // create constructor for array list and context.
@@ -33,14 +34,14 @@ class BookAdapter     // create constructor for array list and context.
         val bookInfo = bookInfoArrayList[position]
         holder.nameTV.text = bookInfo.title
         // holder.publisherTV.setText(bookInfo.getPublisher());
-        holder.pageCountTV.text = "No of Pages : " + bookInfo.pageCount
+        holder.pageCountTV.text = "Pages : " + bookInfo.pageCount
         holder.dateTV.text = bookInfo.publishedDate
         //holder.bookIV.setImageIcon(bookInfo.getThumbnail());
 
         // set image from URL in image view.
-        Picasso.get().load(bookInfo.thumbnail).into(holder.bookIV)
+        //Picasso.get().load(bookInfo.thumbnail).into(holder.bookIV)
         // R.drawable.icon
-        //Glide.with().load().into(holder.bookIV);
+       // Glide.with().load(bookInfo.thumbnail).into(holder.bookIV);
 
         /*
         // click listener for recycler view
