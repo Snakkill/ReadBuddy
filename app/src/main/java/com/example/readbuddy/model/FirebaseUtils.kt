@@ -3,8 +3,11 @@ package com.example.readbuddy.model
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
+import kotlin.collections.ArrayList
 
 //added gradel firestore SDK
 
@@ -36,19 +39,31 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
                 }
     }
 
-    fun GetAllFireStore(){
-        db.collection("users")
-                .get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        Log.d(TAG, "${document.id} => ${document.data}")
-                    }
+    fun GetAllFireStore(): ArrayList<User> {
+        //list of object
+        val UserArrayofObjects = arrayListOf<User>()
+
+       val users = db.collection("users")
+               .orderBy("Score", Query.Direction.DESCENDING)
+               .get()
+               .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d("TAG", "Inside onComplete function!");
+                for (document in task.result) {
+
+                    val userObj = User (
+                         document.data["ID"].toString(),
+                        document.data["Name"].toString(),
+                            document.data["Score"] as Int
+                    )
+
+                    UserArrayofObjects.add(userObj)
 
                 }
-                .addOnFailureListener { exception ->
-                    Log.w(TAG, "Error getting documents.", exception)
-                }
+            }
+        }
 
+        return UserArrayofObjects
 
     }
 

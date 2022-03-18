@@ -1,5 +1,8 @@
 package com.example.readbuddy.fragments
 
+import android.content.ContentValues.TAG
+import android.nfc.Tag
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.readbuddy.model.User
@@ -8,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.example.readbuddy.R
+import com.example.readbuddy.model.FirebaseUtils
 
 class LeaderboardAdapter(private val uList: List<User>) : RecyclerView.Adapter<LeaderboardAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -27,8 +31,14 @@ class LeaderboardAdapter(private val uList: List<User>) : RecyclerView.Adapter<L
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        val DB = FirebaseUtils("","",0)
+        val UserList=DB.GetAllFireStore()
+        Log.d(TAG, UserList.toString())
+
+
         // Sort the list by descending points
-        uList.sortedByDescending { it.points }
+       uList.sortedByDescending { it.points }
         val UserViewModel = uList[position]
         val fullname = UserViewModel.fname + UserViewModel.lname
         holder.tvName.text = fullname
