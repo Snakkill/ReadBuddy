@@ -1,6 +1,7 @@
 package com.example.readbuddy.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.readbuddy.R
+import com.example.readbuddy.model.FirebaseUtils
 import com.example.readbuddy.model.User
 import kotlin.random.Random
 
@@ -44,14 +46,18 @@ class LeaderboardFragment : Fragment() {
 
         var screen = inflater.inflate(R.layout.fragment_leaderboard, container, false)
 
-        val data = generateDummyData()
+        val db = FirebaseUtils("", "", 0)
+        val data = db.GetAllFireStore()
+        Log.d("DB DEBUG", data.toString())
         val adapter = LeaderboardAdapter(data)
         leaderboardRecyclerView = screen.findViewById(R.id.rv_leaderboard)
         leaderboardRecyclerView.layoutManager = LinearLayoutManager(activity)
         leaderboardRecyclerView.adapter = adapter
+
         return screen
     }
 
+    /*
     fun generateDummyData(): ArrayList<User> {
         val dummyUserList = arrayListOf<User>()
         for (i in 1..10) {
@@ -62,6 +68,7 @@ class LeaderboardFragment : Fragment() {
         }
         return dummyUserList
     }
+    */
 
     companion object {
         /**

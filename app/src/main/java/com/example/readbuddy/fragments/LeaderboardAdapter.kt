@@ -32,17 +32,16 @@ class LeaderboardAdapter(private val uList: List<User>) : RecyclerView.Adapter<L
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val DB = FirebaseUtils("","",0)
-        val UserList=DB.GetAllFireStore()
-        Log.d(TAG, UserList.toString())
+        // val DB = FirebaseUtils("","",0)
+        // val UserList=DB.GetAllFireStore()
 
 
         // Sort the list by descending points
-       uList.sortedByDescending { it.points }
+       // uList.sortedByDescending { it.points }
         val UserViewModel = uList[position]
-        val fullname = UserViewModel.fname + UserViewModel.lname
+        val fullname = UserViewModel.name
         holder.tvName.text = fullname
-        holder.tvPoints.text = UserViewModel.points.toString()
+        holder.tvPoints.text = UserViewModel.Score.toString()
         holder.tvRank.text = position.toString()
 
     }
