@@ -48,8 +48,7 @@ dependencies {
     implementation 'nl.dionsegijn:konfetti:1.1.2'
 
     //Glide dependencies
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
 
 
     implementation "androidx.room:room-runtime:2.4.2"

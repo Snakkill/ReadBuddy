@@ -4,7 +4,6 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.readbuddy.list.GlideApp
 
 @Entity(tableName = "reading_list")
 data class User (

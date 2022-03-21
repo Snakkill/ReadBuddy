@@ -58,10 +58,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/view_list_img"
-            android:textSize="10pt"
-            android:textStyle="bold|italic"
             android:padding="10dp"
             android:text="@{isUser.title}"
+            android:textSize="10pt"
+            android:textStyle="bold|italic"
             tools:layout_editor_absoluteX="231dp"
             tools:layout_editor_absoluteY="16dp" />
 

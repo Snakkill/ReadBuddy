@@ -2,10 +2,10 @@ package com.example.readbuddy.model
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.example.readbuddy.list.GlideApp
+import com.bumptech.glide.Glide
 
     @BindingAdapter("imageUrl")
     fun loadImage(view: ImageView, url: String) =
-        GlideApp.
+        Glide.
         with(view.context).
         load(url).into(view)
