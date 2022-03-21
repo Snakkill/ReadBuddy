@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="isUser"
+            type="com.example.readbuddy.model.User" />
+        <variable
+            name="btnRead"
+            type="com.example.readbuddy.list.ListItemClickListener" />
+    </data>
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/cv_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_search_outline"
+    app:cardBackgroundColor="@color/cream"
+    app:cardElevation="10dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/length"
+            android:layout_width="wrap_content"
+            android:layout_toEndOf="@id/view_list_img"
+            android:layout_below="@+id/name"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@{Integer.toString(isUser.len)}"
+            tools:layout_editor_absoluteX="195dp"
+            tools:layout_editor_absoluteY="118dp" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/view_list_img"
+            android:padding="10dp"
+            android:layout_below="@id/title"
+            android:text="@{isUser.author_name}"
+            tools:layout_editor_absoluteX="181dp"
+            tools:layout_editor_absoluteY="77dp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/view_list_img"
+            android:padding="10dp"
+            android:text="@{isUser.title}"
+            android:textSize="10pt"
+            android:textStyle="bold|italic"
+            tools:layout_editor_absoluteX="231dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <ImageButton
+            android:id="@+id/btn_markRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:onClick="@{() ->  btnRead.OnListItemClick()}"
+            app:srcCompat="@drawable/ic_check"
+            tools:layout_editor_absoluteX="338dp"
+            tools:layout_editor_absoluteY="106dp" />
+
+        <ImageView
+            android:id="@+id/view_list_img"
+            android:layout_width="103dp"
+            android:layout_height="154dp"
+            android:layout_alignParentStart="true"
+            app:imageUrl="@{isUser.url}"
+            app:srcCompat="@drawable/ic_book" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+</layout>
