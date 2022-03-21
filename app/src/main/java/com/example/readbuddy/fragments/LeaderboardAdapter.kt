@@ -1,19 +1,15 @@
 package com.example.readbuddy.fragments
 
-import android.content.ContentValues.TAG
-import android.nfc.Tag
-import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.readbuddy.model.User
+import com.example.readbuddy.model.Person
 
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.example.readbuddy.R
-import com.example.readbuddy.model.FirebaseUtils
 
-class LeaderboardAdapter(private val uList: List<User>) : RecyclerView.Adapter<LeaderboardAdapter.ViewHolder>() {
+class LeaderboardAdapter(private val uList: List<Person>) : RecyclerView.Adapter<LeaderboardAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvRank : TextView = view.findViewById(R.id.tv_rank)
         val tvName : TextView = view.findViewById(R.id.tv_name)

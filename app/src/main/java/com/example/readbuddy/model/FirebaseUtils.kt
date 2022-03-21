@@ -17,7 +17,7 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
     var Score= Score
 
     interface UserObjListner{
-        fun onUserObjects(userObjs: MutableList<User>)
+        fun onUserObjects(personObjs: MutableList<Person>)
     }
     lateinit var userObjListner: UserObjListner
 
@@ -44,7 +44,7 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
 
     fun GetAllFireStore(leaderboardFragment: LeaderboardFragment) {
         //list of object
-        var userArrayofObjects: MutableList<User> = mutableListOf()
+        var personArrayofObjects: MutableList<Person> = mutableListOf()
         userObjListner = leaderboardFragment
 
 
@@ -56,20 +56,20 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
                 Log.d("TAG", "Inside onComplete function!");
                 for (document in task.result) {
 
-                    val userObj = User (
+                    val userObj = Person (
                          document.data["ID"].toString(),
                         document.data["Name"].toString(),
                             document.data["Score"] as Long
                     )
                     Log.v(TAG,"DB entry"+userObj.toString())
 
-                    userArrayofObjects.add(userObj)
-                    Log.v(TAG,"HELLO for loop"+userArrayofObjects.toString())
+                    personArrayofObjects.add(userObj)
+                    Log.v(TAG,"HELLO for loop"+personArrayofObjects.toString())
 
                 }
              //   sendObject{userArrayofObjects}
-               (userObjListner as LeaderboardFragment).onUserObjects(userArrayofObjects)
-                Log.v(TAG,"HELLO you"+userArrayofObjects)
+               (userObjListner as LeaderboardFragment).onUserObjects(personArrayofObjects)
+                Log.v(TAG,"HELLO you"+personArrayofObjects)
 
             }
 
@@ -79,7 +79,7 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
 
     }
 
-    private fun sendObject(function: () -> MutableList<User>) {
+    private fun sendObject(function: () -> MutableList<Person>) {
 
     }
 

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.readbuddy.R
 import com.example.readbuddy.model.FirebaseUtils
-import com.example.readbuddy.model.User
+import com.example.readbuddy.model.Person
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -92,8 +92,8 @@ class LeaderboardFragment : Fragment(), FirebaseUtils.UserObjListner {
 
 
 
-    override fun onUserObjects(userObjs: MutableList<User>) {
-        val adapter = LeaderboardAdapter(userObjs)
+    override fun onUserObjects(personObjs: MutableList<Person>) {
+        val adapter = LeaderboardAdapter(personObjs)
         leaderboardRecyclerView.adapter = adapter
     }
 }
