@@ -1,60 +1,98 @@
 package com.example.readbuddy.fragments
 
+import android.app.Notification
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.readbuddy.R
+import com.example.readbuddy.UserApplication
+import com.example.readbuddy.list.ListAdapter
+import com.example.readbuddy.list.ListItemClickListener
+import com.example.readbuddy.viewmodel.UserViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.example.readbuddy.viewmodel.UserViewModelFactory
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_reading_list.*
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentReadingList.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ReadingListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class ReadingListFragment : Fragment(),ListItemClickListener{
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModelFactory((activity?.application as UserApplication).repository)
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reading_list, container, false)
+
+
+
+        val view = inflater.inflate(R.layout.fragment_reading_list, container, false)
+
+
+        val adapter = ListAdapter(this)
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rList_recycler_view)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+         userViewModel.readAllData.observe(viewLifecycleOwner, Observer {
+                user -> user.let{adapter.submitList(it)}
+
+        })
+
+        val itemTouchHelper = ItemTouchHelper( object : ItemTouchHelper.SimpleCallback(0,
+            ItemTouchHelper.LEFT ) {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                // do nothing
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                userViewModel.deleteUser(adapter.getUserByLoc(viewHolder.getAdapterPosition()))
+            }
+        }).attachToRecyclerView(recyclerView)
+
+
+
+
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentReadingList.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ReadingListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun OnListItemClick() {
+//        val repliedNotification = Notification.Builder(context, CHANNEL_ID)
+//            .setSmallIcon(R.drawable.ic_message)
+//            .setContentText(getString(R.string.replied))
+//            .build()
+
+        viewKonfetti.build()
+            .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+            .setDirection(0.0, 359.0)
+            .setSpeed(1f, 5f)
+            .setFadeOutEnabled(true)
+            .setTimeToLive(2000L)
+            .addShapes(Shape.RECT, Shape.CIRCLE)
+            .addSizes(Size(12))
+            .setPosition(-50f, viewKonfetti.width + 50f, -50f, -50f)
+            .streamFor(300, 5000L)
+        Toast.makeText(context,"Congratulations",Toast.LENGTH_SHORT).show()
+
+        }
     }
-}
+
+
+
+
+
