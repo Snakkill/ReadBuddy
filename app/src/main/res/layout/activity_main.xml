@@ -30,4 +30,7 @@
         />
 
 
+    android:id="@+id/idEdtSearchBooks"
+    android:id="@+id/idBtnSearch"
+
 </androidx.constraintlayout.widget.ConstraintLayout>
