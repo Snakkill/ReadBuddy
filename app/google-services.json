@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "927504597004",
+    "project_id": "readbuddy-25187",
+    "storage_bucket": "readbuddy-25187.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927504597004:android:ea3b39eb60a5ec9b322e29",
+        "android_client_info": {
+          "package_name": "com.example.readbuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "927504597004-fhcp1m6l4ks45nrcshsc6g56s7gmp4cu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLvn-a2BTF6caNNybfOj77iM5vei3XsY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "927504597004-fhcp1m6l4ks45nrcshsc6g56s7gmp4cu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

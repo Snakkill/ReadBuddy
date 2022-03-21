@@ -1,11 +1,17 @@
 package com.example.readbuddy.fragments
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.readbuddy.R
+import com.example.readbuddy.model.FirebaseUtils
+import com.example.readbuddy.model.Person
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,10 +23,11 @@ private const val ARG_PARAM2 = "param2"
  * Use the [LeaderboardFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LeaderboardFragment : Fragment() {
+class LeaderboardFragment : Fragment(), FirebaseUtils.UserObjListner {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var leaderboardRecyclerView : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +41,34 @@ class LeaderboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Dummy data to test leaderboard layouts.
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_leaderboard, container, false)
+
+        var screen = inflater.inflate(R.layout.fragment_leaderboard, container, false)
+
+        val db = FirebaseUtils("", "", 0)
+        val data = db.GetAllFireStore(this)
+        Log.d(TAG,data.toString()+"HELLO")
+
+        leaderboardRecyclerView = screen.findViewById(R.id.rv_leaderboard)
+        leaderboardRecyclerView.layoutManager = LinearLayoutManager(activity)
+
+
+        return screen
     }
+
+    /*
+    fun generateDummyData(): ArrayList<User> {
+        val dummyUserList = arrayListOf<User>()
+        for (i in 1..10) {
+            val user = User("John", "Doe")
+            val randomScore: List<Int> = List(10) { Random.nextInt(0, 1000) }
+            user.points = randomScore[0]
+            dummyUserList.add(user)
+        }
+        return dummyUserList
+    }
+    */
 
     companion object {
         /**
@@ -56,5 +88,12 @@ class LeaderboardFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+
+
+    override fun onUserObjects(personObjs: MutableList<Person>) {
+        val adapter = LeaderboardAdapter(personObjs)
+        leaderboardRecyclerView.adapter = adapter
     }
 }

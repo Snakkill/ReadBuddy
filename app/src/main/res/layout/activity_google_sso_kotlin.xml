@@ -4,16 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/book"
+
     tools:context=".Google_SSO_kotlin">
 
-    <Button
-        android:id="@+id/loginBttn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
-        android:onClick="NextPage"
-        android:text="LogIN"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="353dp"
+        android:layout_height="306dp"
+        android:background="@drawable/ic_signin_bg"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00E1D5C9"
+            android:fontFamily="serif"
+            android:text="ReadBuddy"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/cream"
+            android:textSize="60sp" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/loginBttn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="NextPage"
+            android:padding="10dp"
+            android:text="Debug Login" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
