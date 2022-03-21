@@ -2,12 +2,10 @@ package com.example.readbuddy.model
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import com.example.readbuddy.fragments.LeaderboardFragment
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.util.*
-import kotlin.collections.ArrayList
 
 //added gradel firestore SDK
 
@@ -17,6 +15,11 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
     val ID =ID
     val Name = Name
     var Score= Score
+
+    interface UserObjListner{
+        fun onUserObjects(userObjs: MutableList<User>)
+    }
+    lateinit var userObjListner: UserObjListner
 
 
     fun StoreFireStore(){
@@ -39,9 +42,11 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
                 }
     }
 
-    fun GetAllFireStore(): ArrayList<User> {
+    fun GetAllFireStore(leaderboardFragment: LeaderboardFragment) {
         //list of object
-        val UserArrayofObjects = arrayListOf<User>()
+        var userArrayofObjects: MutableList<User> = mutableListOf()
+        userObjListner = leaderboardFragment
+
 
        val users = db.collection("users")
                .orderBy("Score", Query.Direction.DESCENDING)
@@ -54,16 +59,27 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
                     val userObj = User (
                          document.data["ID"].toString(),
                         document.data["Name"].toString(),
-                            document.data["Score"] as Int
+                            document.data["Score"] as Long
                     )
+                    Log.v(TAG,"DB entry"+userObj.toString())
 
-                    UserArrayofObjects.add(userObj)
+                    userArrayofObjects.add(userObj)
+                    Log.v(TAG,"HELLO for loop"+userArrayofObjects.toString())
 
                 }
+             //   sendObject{userArrayofObjects}
+               (userObjListner as LeaderboardFragment).onUserObjects(userArrayofObjects)
+                Log.v(TAG,"HELLO you"+userArrayofObjects)
+
             }
+
         }
 
-        return UserArrayofObjects
+
+
+    }
+
+    private fun sendObject(function: () -> MutableList<User>) {
 
     }
 
