@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.os.Bundle
 import com.example.readbuddy.R
-import com.squareup.picasso.Picasso
 import android.widget.Toast
 import android.content.Intent
 import android.net.Uri

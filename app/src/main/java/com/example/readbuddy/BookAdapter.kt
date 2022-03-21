@@ -16,7 +16,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import com.example.readbuddy.R
-import com.squareup.picasso.Picasso
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.module.AppGlideModule
