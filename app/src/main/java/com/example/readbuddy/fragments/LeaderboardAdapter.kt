@@ -42,7 +42,8 @@ class LeaderboardAdapter(private val uList: List<User>) : RecyclerView.Adapter<L
         val fullname = UserViewModel.name
         holder.tvName.text = fullname
         holder.tvPoints.text = UserViewModel.Score.toString()
-        holder.tvRank.text = position.toString()
+        val rank = position + 1 // Fix 0 index
+        holder.tvRank.text = rank.toString()
 
     }
 
