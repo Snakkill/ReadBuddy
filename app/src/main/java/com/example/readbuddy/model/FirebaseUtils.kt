@@ -7,28 +7,29 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-//added gradel firestore SDK
+//added gradle firestore SDK
 
 class FirebaseUtils(ID: String,Name:String?,Score:Int){
-    val db = Firebase.firestore
+    private val db = Firebase.firestore
 
-    val ID =ID
-    val Name = Name
-    var Score= Score
+    val id =ID
+    val name = Name
+    private var score= Score
 
+    //created interface to pull info from callback
     interface UserObjListner{
         fun onUserObjects(personObjs: MutableList<Person>)
     }
-    lateinit var userObjListner: UserObjListner
+    private lateinit var userObjListner: UserObjListner
 
 
-    fun StoreFireStore(){
+    fun storeFireStore(){
 
         // Create a new user with a first and last name
         val user = hashMapOf(
-                "ID" to ID,
-                "Name" to Name,
-                "Score" to Score
+                "ID" to id,
+                "Name" to name,
+                "Score" to score
         )
 
 // Add a new document with a generated ID
@@ -41,10 +42,10 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
                     Log.w(TAG, "Error adding document", e)
                 }
     }
-
-    fun GetAllFireStore(leaderboardFragment: LeaderboardFragment) {
+//gets all data from DB in Descending order
+    fun getAllFireStore(leaderboardFragment: LeaderboardFragment) {
         //list of object
-        var personArrayofObjects: MutableList<Person> = mutableListOf()
+        val personArrayofObjects: MutableList<Person> = mutableListOf()
         userObjListner = leaderboardFragment
 
 
@@ -53,7 +54,7 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
                .get()
                .addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                Log.d("TAG", "Inside onComplete function!");
+                Log.d("TAG", "Inside onComplete function!")
                 for (document in task.result) {
 
                     val userObj = Person (
@@ -61,15 +62,15 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
                         document.data["Name"].toString(),
                             document.data["Score"] as Long
                     )
-                    Log.v(TAG,"DB entry"+userObj.toString())
+                    Log.v(TAG,userObj.toString())
 
                     personArrayofObjects.add(userObj)
-                    Log.v(TAG,"HELLO for loop"+personArrayofObjects.toString())
+                    Log.v(TAG,personArrayofObjects.toString())
 
                 }
-             //   sendObject{userArrayofObjects}
+
                (userObjListner as LeaderboardFragment).onUserObjects(personArrayofObjects)
-                Log.v(TAG,"HELLO you"+personArrayofObjects)
+                Log.v(TAG, personArrayofObjects.toString())
 
             }
 
@@ -79,9 +80,7 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
 
     }
 
-    private fun sendObject(function: () -> MutableList<Person>) {
 
-    }
 
     fun checkDb(uid: String): Boolean {
 

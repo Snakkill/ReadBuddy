@@ -44,9 +44,10 @@
             android:id="@+id/loginBttn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="NextPage"
+            android:onClick="startMain"
             android:padding="10dp"
-            android:text="Debug Login" />
+            android:text="Debug Login"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 

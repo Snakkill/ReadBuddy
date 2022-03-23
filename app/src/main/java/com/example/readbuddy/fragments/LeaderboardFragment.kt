@@ -47,7 +47,7 @@ class LeaderboardFragment : Fragment(), FirebaseUtils.UserObjListner {
         var screen = inflater.inflate(R.layout.fragment_leaderboard, container, false)
 
         val db = FirebaseUtils("", "", 0)
-        val data = db.GetAllFireStore(this)
+        val data = db.getAllFireStore(this)
         Log.d(TAG,data.toString()+"HELLO")
 
         leaderboardRecyclerView = screen.findViewById(R.id.rv_leaderboard)

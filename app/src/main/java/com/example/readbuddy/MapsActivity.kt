@@ -15,23 +15,24 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.example.readbuddy.databinding.ActivityMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import kotlinx.coroutines.delay
-import kotlin.concurrent.thread
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
-
+    //variables needed for GoogleMaps
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+    //variables needed for current location. Should be passed by intent later
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-     var currentLat:Double = 0.0
-     var currentLong:Double = 0.0
+    private var currentLat:Double = 0.0
+    private var currentLong:Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
 
       fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
-          checkLocation()
+        checkLocation() //set variables to new current cords
     
 
             super.onCreate(savedInstanceState)
@@ -80,17 +81,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
 
         mMap = googleMap
-        // Add a marker in Sydney and move the camera
+
         val currentPosition = LatLng(currentLat,currentLong)
         val example1= LatLng(currentLat+0.01,currentLong+0.01)
         val example2= LatLng(currentLat-0.02,currentLong-0.02)
         val example3= LatLng(currentLat+0.03,currentLong-0.03)
+
+        //Fake markers to represent API
         mMap.addMarker(MarkerOptions().position(currentPosition).title("You are here"))
         mMap.addMarker(MarkerOptions().position(example1).title("Barns And Nobel"))
         mMap.addMarker(MarkerOptions().position(example2).title("Books ETC."))
         mMap.addMarker(MarkerOptions().position(example3).title("Target"))
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentPosition))
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, 15f));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, 15f))
 
     }
 
