@@ -9,6 +9,9 @@ import android.view.View
 import android.widget.TextView
 import com.example.readbuddy.R
 
+/*
+    Handles filling the leaderboard with leaderboard items.
+ */
 class LeaderboardAdapter(private val uList: List<Person>) : RecyclerView.Adapter<LeaderboardAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvRank : TextView = view.findViewById(R.id.tv_rank)
@@ -19,25 +22,23 @@ class LeaderboardAdapter(private val uList: List<Person>) : RecyclerView.Adapter
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): LeaderboardAdapter.ViewHolder {
-
+    /*
+        Write fragment behavior code down below
+     */
+    ): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.leaderboard_item, parent, false)
         return ViewHolder(view)
     }
 
+    /*
+        Handle inflating the recyclerview with data
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        // val DB = FirebaseUtils("","",0)
-        // val UserList=DB.GetAllFireStore()
-
-
-        // Sort the list by descending points
-       // uList.sortedByDescending { it.points }
-        val UserViewModel = uList[position]
-        val fullname = UserViewModel.name
-        holder.tvName.text = fullname
-        holder.tvPoints.text = UserViewModel.Score.toString()
+        val userViewModel = uList[position]
+        val fullName = userViewModel.name
+        holder.tvName.text = fullName
+        holder.tvPoints.text = userViewModel.Score.toString()
         val rank = position + 1 // Fix 0 index
         holder.tvRank.text = rank.toString()
 

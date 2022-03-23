@@ -2,7 +2,6 @@ package com.example.readbuddy
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -71,11 +70,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-
-
-    private fun uploadInfo() {
-        // Create data
     }
 }
