@@ -1,6 +1,5 @@
 package com.example.readbuddy.fragments
 
-import android.app.Notification
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -19,9 +17,7 @@ import com.example.readbuddy.UserApplication
 import com.example.readbuddy.list.ListAdapter
 import com.example.readbuddy.list.ListItemClickListener
 import com.example.readbuddy.viewmodel.UserViewModel
-
 import com.example.readbuddy.viewmodel.UserViewModelFactory
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_reading_list.*
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
@@ -64,19 +60,11 @@ class ReadingListFragment : Fragment(),ListItemClickListener{
             }
         }).attachToRecyclerView(recyclerView)
 
-
-
-
-
         return view
     }
 
     override fun OnListItemClick() {
-//        val repliedNotification = Notification.Builder(context, CHANNEL_ID)
-//            .setSmallIcon(R.drawable.ic_message)
-//            .setContentText(getString(R.string.replied))
-//            .build()
-
+        val toastText ="Congratulations"
         viewKonfetti.build()
             .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
             .setDirection(0.0, 359.0)
@@ -87,7 +75,8 @@ class ReadingListFragment : Fragment(),ListItemClickListener{
             .addSizes(Size(12))
             .setPosition(-50f, viewKonfetti.width + 50f, -50f, -50f)
             .streamFor(300, 5000L)
-        Toast.makeText(context,"Congratulations",Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(context,toastText,Toast.LENGTH_SHORT).show()
 
         }
     }

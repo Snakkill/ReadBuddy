@@ -1,7 +1,6 @@
 package com.example.readbuddy.model
 
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
