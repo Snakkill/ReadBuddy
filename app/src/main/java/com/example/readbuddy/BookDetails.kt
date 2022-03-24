@@ -62,8 +62,16 @@ class BookDetails : AppCompatActivity() {
             .into(bookIV)
     }
 
+    // launch map feature
     fun LaunchMaps(view: View) {
         val intent = Intent(this,MapsActivity::class.java)
+        startActivity(intent)
+    }
+
+    // launch book preview
+    fun ReadBook(view: View) {
+        val intent = Intent(this,PreviewBook::class.java)
+        intent.putExtra("link", previewLink)
         startActivity(intent)
     }
 }

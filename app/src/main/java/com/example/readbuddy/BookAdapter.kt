@@ -50,8 +50,7 @@ class BookAdapter
               i.putExtra("pageCount", bookInfo.pageCount)
               i.putExtra("description", bookInfo.description)
               i.putExtra("thumbnail", bookInfo.thumbnail)
-              // preview link
-              //intent.putExtra("previewLink" bookInfo.title)
+              i.putExtra("previewLink", bookInfo.previewLink)
               mcontext.startActivity(i)
         }
     }
