@@ -30,10 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         // Set up the bottom navigation
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+
         replaceFragment(homeFragment)
 
         // Deprecated, look into a different way to do this when time permits.
         // Still functions
+        bottomNav.selectedItemId = R.id.menu_home; // Set the selected item
         bottomNav.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.menu_home -> replaceFragment(homeFragment)
