@@ -22,7 +22,8 @@
                 android:id="@+id/idIVbook"
                 android:layout_width="130dp"
                 android:layout_height="160dp"
-                android:layout_margin="18dp" />
+                android:layout_margin="18dp"
+                android:contentDescription="TODO" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -99,6 +100,13 @@
                 android:layout_weight="1"
                 android:text="Preview"
                 android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/googleMapBttn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find Book Near Me"
+            android:onClick="LaunchMaps"/>
 
 
     </LinearLayout>

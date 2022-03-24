@@ -59,4 +59,9 @@ class BookDetails : AppCompatActivity() {
             .error(R.drawable.ic_baseline_error_24)
             .into(bookIV)
     }
+
+    fun LaunchMaps(view: View) {
+        val intent = Intent(this,MapsActivity::class.java)
+        startActivity(intent)
+    }
 }

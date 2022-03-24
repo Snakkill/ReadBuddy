@@ -2,7 +2,6 @@ package com.example.readbuddy
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -64,18 +63,12 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_logout_btn -> {
                 Toast.makeText(this, "Logout button pressed", Toast.LENGTH_SHORT).show()
                 auth.signOut()
-                val intent = Intent(this,Google_SSO_kotlin::class.java)
+                val intent = Intent(this,GoogleSSO::class.java)
                 intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 //clear back stack
                 startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-
-
-    private fun uploadInfo() {
-        // Create data
     }
 }

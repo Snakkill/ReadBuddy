@@ -41,7 +41,7 @@
             android:exported="true"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".Google_SSO_kotlin"
+            android:name=".GoogleSSO"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,9 +1,10 @@
+@file:Suppress("SpellCheckingInspection", "SpellCheckingInspection", "SpellCheckingInspection")
+
 package com.example.readbuddy
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.readbuddy.model.FirebaseUtils
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -16,14 +17,14 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class Google_SSO_kotlin : AppCompatActivity() {
+class GoogleSSO : AppCompatActivity() {
 
    private companion object{
-       private  const val TAG= "Google_SSO_kotlin"
+       private  const val TAG= "GoogleSSO"
        private const val RC_GOOGLE_SIGN_IN  =4926
    }
     private lateinit var auth: FirebaseAuth
-// ...
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,16 +33,16 @@ class Google_SSO_kotlin : AppCompatActivity() {
 
         // Initialize Firebase Auth
         auth = Firebase.auth
-//getString(R.string.default_web_client_id)
+
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("927504597004-fhcp1m6l4ks45nrcshsc6g56s7gmp4cu.apps.googleusercontent.com") //dont touch
+                .requestIdToken("927504597004-fhcp1m6l4ks45nrcshsc6g56s7gmp4cu.apps.googleusercontent.com") //don't touch
                 .requestEmail()
                 .build()
        val client = GoogleSignIn.getClient(this,gso)
 
-       var btnSignIn = findViewById<com.google.android.gms.common.SignInButton>(R.id.btnSignIn)
+       val btnSignIn = findViewById<com.google.android.gms.common.SignInButton>(R.id.btnSignIn)
         btnSignIn.setOnClickListener{
             val signInIntent = client.signInIntent
             startActivityForResult(signInIntent,RC_GOOGLE_SIGN_IN)
@@ -60,31 +61,31 @@ class Google_SSO_kotlin : AppCompatActivity() {
             return
 
         }
-         user?.let {
+        user.let {
 
-             val name = user.displayName
-             val uid = user.uid
+            val name = user.displayName
+            val uid = user.uid
 
-             val DB = FirebaseUtils(uid,name,0)
-            val inDB= DB.checkDb(uid) // check if in DB already
+            val db = FirebaseUtils(uid,name,0)
+            val inDB= db.checkDb(uid) // check if in DB already
 
-             if(inDB==true){
-             DB.StoreFireStore() // store to DB
-                  }
+            if(inDB){
+                db.storeFireStore() // store to DB
+            }
 
 
-             if (name != null) {
-                 Log.v(TAG,name+","+uid)
-             }
+            if (name != null) {
+                Log.v(TAG,uid)
+            }
 
-         }
+        }
 
 
 
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
 
-        finish() // close Log activty so not in backstack
+        finish() // close Log activity so not in backstack
     }
 
 
@@ -126,12 +127,14 @@ class Google_SSO_kotlin : AppCompatActivity() {
                 }
     }
 
-    fun NextPage(view: View) {
+    // for debug log in button
+   /*
+     fun startMain(view: View) {
 
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
 
-        }
+        }*/
 
 
 
