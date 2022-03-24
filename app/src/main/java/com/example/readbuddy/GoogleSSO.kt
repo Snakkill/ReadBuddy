@@ -5,6 +5,7 @@ package com.example.readbuddy
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.readbuddy.model.FirebaseUtils
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -37,7 +38,7 @@ class GoogleSSO : AppCompatActivity() {
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("927504597004-fhcp1m6l4ks45nrcshsc6g56s7gmp4cu.apps.googleusercontent.com") //don't touch
+                .requestIdToken(getString(R.string.default_web_client_id)) //don't touch //don't touch
                 .requestEmail()
                 .build()
        val client = GoogleSignIn.getClient(this,gso)
@@ -128,13 +129,13 @@ class GoogleSSO : AppCompatActivity() {
     }
 
     // for debug log in button
-   /*
+
      fun startMain(view: View) {
 
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
 
-        }*/
+        }
 
 
 
