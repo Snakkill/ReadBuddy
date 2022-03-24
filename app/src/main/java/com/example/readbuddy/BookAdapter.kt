@@ -61,6 +61,9 @@ class BookAdapter // create constructor for array list and context.
               i.putExtra("pageCount", bookInfo.pageCount)
               i.putExtra("description", bookInfo.description)
               i.putExtra("thumbnail", bookInfo.thumbnail)
+              i.putExtra("authors", bookInfo.authors[0])
+            Log.i("BookAdapter",
+            bookInfo.authors[0])
               // preview link
               //intent.putExtra("previewLink" bookInfo.title)
               // info link
