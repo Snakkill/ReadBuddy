@@ -1,6 +1,7 @@
 package com.example.readbuddy
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -67,6 +68,12 @@ class BookDetails : AppCompatActivity() {
         val intent = Intent(this,MapsActivity::class.java)
         intent.putExtra("lat",33.15)
         intent.putExtra("lon",-96.73)
+        startActivity(intent)
+    }
+
+    fun LookUpAmazon(view: View) {
+        val url :String = "https://www.amazon.com/s?k="+title
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)
     }
 }

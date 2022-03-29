@@ -29,7 +29,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-    currentLat=intent.getDoubleExtra("lat",0.0)
+        currentLat=intent.getDoubleExtra("lat",0.0)
         currentLong=intent.getDoubleExtra("lon",0.0)
 
       fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
@@ -65,6 +65,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                currentLat=it.latitude
                currentLong=it.longitude
                Toast.makeText(applicationContext,"${currentLat}${currentLong}",Toast.LENGTH_SHORT).show()
+
            }
        }
     }
