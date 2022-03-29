@@ -10,12 +10,13 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Find a book"
-        android:padding="10dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="352dp"
         android:background="@drawable/ic_search_outline"
+        android:hint="@string/find_a_book"
+        android:inputType="text"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="serif"
-        android:text="Find your next read"
+        android:text="@string/find_your_next_read"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/searchView"
@@ -43,7 +44,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="1dp"
-        android:background="#00E1D5C9"
+        android:background="@color/cream"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -54,59 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:visibility="invisible">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                app:cardBackgroundColor="@color/white"
-                app:contentPadding="10dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Test Book" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                app:cardBackgroundColor="@color/white"
-                app:contentPadding="10dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Test Book" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                app:cardBackgroundColor="@color/white"
-                app:contentPadding="10dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Test Book" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                app:cardBackgroundColor="@color/white"
-                app:contentPadding="10dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Test Book" />
-            </androidx.cardview.widget.CardView>
+            android:visibility="visible">
 
         </LinearLayout>
     </HorizontalScrollView>

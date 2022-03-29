@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.SearchView
 import com.example.readbuddy.R
 import com.example.readbuddy.SearchResults
@@ -33,8 +34,8 @@ class HomeFragment : Fragment() {
     ): View? {
         // Create the screen to access view elements in the layout.
         val screen = inflater.inflate(R.layout.fragment_home, container, false)
-
         val button = screen.findViewById<Button>(R.id.idBtnSearch)
+        //val carousel = screen.findViewById<LinearLayout>(R.id.book_carousel)
         // Handle the search function
         button.setOnClickListener{
             val searchText = screen.findViewById<EditText>(R.id.searchView)
