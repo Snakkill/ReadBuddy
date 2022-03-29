@@ -29,7 +29,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
+    currentLat=intent.getDoubleExtra("lat",0.0)
+        currentLong=intent.getDoubleExtra("lon",0.0)
 
       fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
         checkLocation() //set variables to new current cords

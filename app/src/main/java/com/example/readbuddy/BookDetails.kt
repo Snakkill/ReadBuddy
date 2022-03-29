@@ -63,7 +63,10 @@ class BookDetails : AppCompatActivity() {
     }
 
     fun LaunchMaps(view: View) {
+
         val intent = Intent(this,MapsActivity::class.java)
+        intent.putExtra("lat",33.15)
+        intent.putExtra("lon",-96.73)
         startActivity(intent)
     }
 }
