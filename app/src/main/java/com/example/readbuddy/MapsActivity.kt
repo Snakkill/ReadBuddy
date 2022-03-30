@@ -32,8 +32,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         currentLat=intent.getDoubleExtra("lat",0.0)
         currentLong=intent.getDoubleExtra("lon",0.0)
 
-      fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
-        checkLocation() //set variables to new current cords
+    //  fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
+   //     checkLocation() //set variables to new current cords
     
 
             super.onCreate(savedInstanceState)
@@ -49,7 +49,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
     //loads late, will fix with vm
-    private fun checkLocation() {
+   /* private fun checkLocation() {
         val task = fusedLocationClient.lastLocation
 
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -68,7 +68,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
            }
        }
-    }
+    }*/
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
