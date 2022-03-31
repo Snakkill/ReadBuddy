@@ -1,22 +1,14 @@
 package com.example.readbuddy.model
 
 import android.content.ContentValues.TAG
-import android.content.Intent
 import android.util.Log
-import android.widget.Toast
 import com.example.readbuddy.fragments.LeaderboardFragment
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.firestore.QuerySnapshot
-
-import androidx.annotation.NonNull
-import androidx.core.content.ContextCompat.startActivity
-import com.example.readbuddy.MainActivity
-
-import com.google.android.gms.tasks.OnCompleteListener
-import kotlin.concurrent.timerTask
 
 
 //added gradle firestore SDK
@@ -120,7 +112,6 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
             val uid = user.uid
             val name = user.displayName
 
-            Log.d(TAG,name+"  "+uid)
 
 
 
@@ -129,9 +120,28 @@ class FirebaseUtils(ID: String,Name:String?,Score:Int){
             db.collection("users").whereEqualTo("ID",uid).get()
                    .addOnSuccessListener {
                        for(document in it){
-                           db.collection("users")
-                                   .document(document.id)
-                                   .update("Score",910)
+                      var docRef = db.collection("users").document(document.id)
+
+                           docRef.get().addOnCompleteListener(OnCompleteListener<DocumentSnapshot?> { task ->
+                               if (task.isSuccessful) {
+                                   val document = task.result
+                                   if (document != null) {
+                                       Log.i("LOGGER", "Score " + document.getLong("Score"))
+                                       db.collection("users")
+                                               .document(document.id)
+                                               .update("Score", document.getLong("Score")?.plus(50))
+
+
+                                   } else {
+                                       Log.d("LOGGER", "No such document")
+                                   }
+                               } else {
+                                   Log.d("LOGGER", "get failed with ", task.exception)
+                               }
+                           })
+
+
+
                        }
                    }
 
