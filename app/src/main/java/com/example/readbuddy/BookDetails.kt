@@ -16,8 +16,11 @@ import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.example.readbuddy.model.User
+import com.example.readbuddy.viewmodel.UserViewModel
+import com.example.readbuddy.viewmodel.UserViewModelFactory
 
-class BookDetails : AppCompatActivity() {
+class BookDetails : AppCompatActivity(), View.OnClickListener {
     //aymans
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -109,16 +112,6 @@ class BookDetails : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
-
-
-
-
-
-
-
-
-
     }
 
     fun LookUpAmazon(view: View) {
