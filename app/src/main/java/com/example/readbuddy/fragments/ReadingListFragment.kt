@@ -16,6 +16,7 @@ import com.example.readbuddy.R
 import com.example.readbuddy.UserApplication
 import com.example.readbuddy.list.ListAdapter
 import com.example.readbuddy.list.ListItemClickListener
+import com.example.readbuddy.model.FirebaseUtils
 import com.example.readbuddy.viewmodel.UserViewModel
 import com.example.readbuddy.viewmodel.UserViewModelFactory
 import kotlinx.android.synthetic.main.fragment_reading_list.*
@@ -65,6 +66,10 @@ class ReadingListFragment : Fragment(),ListItemClickListener{
 
     override fun OnListItemClick() {
         val toastText ="Congratulations"
+
+        val db = FirebaseUtils("","",0)
+        db.updateDb()
+
         viewKonfetti.build()
             .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
             .setDirection(0.0, 359.0)

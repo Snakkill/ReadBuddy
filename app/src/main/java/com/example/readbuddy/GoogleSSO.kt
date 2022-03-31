@@ -67,12 +67,10 @@ class GoogleSSO : AppCompatActivity() {
             val name = user.displayName
             val uid = user.uid
 
-            val db = FirebaseUtils(uid,name,0)
-            val inDB= db.checkDb(uid) // check if in DB already
 
-            if(inDB){
-                db.storeFireStore() // store to DB
-            }
+            val db = FirebaseUtils(uid,name,0)
+
+            db.storeFireStore(uid) // store to DB
 
 
             if (name != null) {
