@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
@@ -18,7 +19,7 @@ import com.example.readbuddy.R
 import com.example.readbuddy.UserApplication
 import com.example.readbuddy.list.ListAdapter
 import com.example.readbuddy.list.ListItemClickListener
-import com.example.readbuddy.model.User
+import com.example.readbuddy.model.FirebaseUtils
 import com.example.readbuddy.viewmodel.UserViewModel
 import com.example.readbuddy.viewmodel.UserViewModelFactory
 import com.google.android.material.snackbar.Snackbar
@@ -41,7 +42,7 @@ class ReadingListFragment : Fragment(),ListItemClickListener{
 
 
         val view = inflater.inflate(R.layout.fragment_reading_list, container, false)
-
+        var checkbttn = view.findViewById<ImageButton>(R.id.btn_markRead)
 
         val adapter = ListAdapter(this)
 
@@ -73,6 +74,14 @@ class ReadingListFragment : Fragment(),ListItemClickListener{
 
     override fun OnListItemClick() {
         val toastText ="Congratulations"
+
+        //Aymans code, create DB instance and update
+        val db = FirebaseUtils("","",0)
+        db.updateDb()
+
+
+
+
         viewKonfetti.build()
             .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
             .setDirection(0.0, 359.0)

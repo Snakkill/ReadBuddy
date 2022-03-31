@@ -1,28 +1,25 @@
 package com.example.readbuddy
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.viewModels
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
-import com.example.readbuddy.model.User
-import com.example.readbuddy.viewmodel.UserViewModel
-import com.example.readbuddy.viewmodel.UserViewModelFactory
-import kotlinx.android.synthetic.main.activity_book_details.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
-
-class BookDetails : AppCompatActivity(), View.OnClickListener {
-
-//    private val userViewModel: UserViewModel by viewModels {
-//        UserViewModelFactory((application as UserApplication).repository)
-//    }
+class BookDetails : AppCompatActivity() {
+    //aymans
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     // variables for xml
     var title: String? = null
@@ -92,6 +89,41 @@ class BookDetails : AppCompatActivity(), View.OnClickListener {
     // launch map feature
     fun LaunchMaps(view: View) {
         val intent = Intent(this,MapsActivity::class.java)
+
+        fusedLocationClient= LocationServices.getFusedLocationProviderClient(this)
+        val task = fusedLocationClient.lastLocation
+
+        if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)
+                !=PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                !=PackageManager.PERMISSION_GRANTED
+        ){
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),101)
+            return
+        }
+        task.addOnSuccessListener {
+            if(it!=null){
+                Toast.makeText(applicationContext,"${it.latitude}${it.longitude}",Toast.LENGTH_SHORT).show()
+                intent.putExtra("lat",it.latitude)
+                intent.putExtra("lon",it.longitude)
+                startActivity(intent)
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+
+    fun LookUpAmazon(view: View) {
+        val url :String = "https://www.amazon.com/s?k="+title
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)
     }
 
