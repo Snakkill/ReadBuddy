@@ -43,15 +43,16 @@ class BookAdapter
 
         // start intent for book details, passing data from BookInfo class
         holder.itemView.setOnClickListener {
-            val i = Intent(mcontext, BookDetails::class.java)
-              i.putExtra("title", bookInfo.title)
-              i.putExtra("subtitle", bookInfo.subtitle)
-              i.putExtra("publishedDate", bookInfo.publishedDate)
-              i.putExtra("pageCount", bookInfo.pageCount)
-              i.putExtra("description", bookInfo.description)
-              i.putExtra("thumbnail", bookInfo.thumbnail)
-              i.putExtra("previewLink", bookInfo.previewLink)
-              mcontext.startActivity(i)
+          val i = Intent(mcontext, BookDetails::class.java)
+          i.putExtra("title", bookInfo.title)
+          i.putExtra("subtitle", bookInfo.subtitle)
+          i.putExtra("publishedDate", bookInfo.publishedDate)
+          i.putExtra("pageCount", bookInfo.pageCount)
+          i.putExtra("description", bookInfo.description)
+          i.putExtra("thumbnail", bookInfo.thumbnail)
+          i.putExtra("previewLink", bookInfo.previewLink)
+          i.putExtra("authors", bookInfo.authors[0])
+          mcontext.startActivity(i)
         }
     }
 

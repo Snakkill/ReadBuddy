@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -77,9 +78,6 @@ class BookDetails : AppCompatActivity(), View.OnClickListener {
         descTV.setText(description)
         pageTV.setText("No Of Pages : $pageCount")
 
-        // fix with glide
-        //Picasso.get().load(thumbnail).into(bookIV)
-
         imageUrl = thumbnail!!.drop(4)
         imageUrl = "https$imageUrl"
         Log.d("API DEBUG", imageUrl)
@@ -88,6 +86,7 @@ class BookDetails : AppCompatActivity(), View.OnClickListener {
             .placeholder(R.drawable.ic_baseline_error_24)
             .error(R.drawable.ic_baseline_error_24)
             .into(bookIV)
+        readingListBtn.setOnClickListener(this)
     }
 
     // launch map feature
