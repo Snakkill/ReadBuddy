@@ -7,15 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.cardview.widget.CardView
-import com.android.volley.toolbox.Volley
-import com.bumptech.glide.Glide
-import com.example.readbuddy.BookInfo
+import android.widget.Button
+import android.widget.EditText
+import android.widget.SearchView
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.readbuddy.R
 import com.example.readbuddy.SearchResults
-import kotlinx.android.synthetic.main.activity_maps.*
-import org.w3c.dom.Text
+import com.example.readbuddy.UserApplication
+import com.example.readbuddy.model.User
+import com.example.readbuddy.viewmodel.UserViewModel
+import com.example.readbuddy.viewmodel.UserViewModelFactory
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -23,6 +25,10 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
+//    private val userViewModel: UserViewModel by activityViewModels {
+//        UserViewModelFactory((activity?.application as UserApplication).repository)
+//    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {

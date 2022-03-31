@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -16,17 +18,21 @@ import com.example.readbuddy.R
 import com.example.readbuddy.UserApplication
 import com.example.readbuddy.list.ListAdapter
 import com.example.readbuddy.list.ListItemClickListener
+import com.example.readbuddy.model.User
 import com.example.readbuddy.viewmodel.UserViewModel
 import com.example.readbuddy.viewmodel.UserViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_reading_list.*
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 
 class ReadingListFragment : Fragment(),ListItemClickListener{
 
-    private val userViewModel: UserViewModel by viewModels {
+
+    private val userViewModel: UserViewModel by activityViewModels {
         UserViewModelFactory((activity?.application as UserApplication).repository)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,8 +54,8 @@ class ReadingListFragment : Fragment(),ListItemClickListener{
 
         })
 
-        val itemTouchHelper = ItemTouchHelper( object : ItemTouchHelper.SimpleCallback(0,
-            ItemTouchHelper.LEFT ) {
+        ItemTouchHelper( object : ItemTouchHelper.SimpleCallback(0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
                 // do nothing
                 return false
@@ -57,6 +63,8 @@ class ReadingListFragment : Fragment(),ListItemClickListener{
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 userViewModel.deleteUser(adapter.getUserByLoc(viewHolder.getAdapterPosition()))
+                adapter.notifyItemRemoved(viewHolder.getAdapterPosition())
+
             }
         }).attachToRecyclerView(recyclerView)
 
