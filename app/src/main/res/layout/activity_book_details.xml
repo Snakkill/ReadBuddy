@@ -94,12 +94,13 @@
             <!--book preview-->
             <Button
                 android:id="@+id/idBtnPreview"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:text="Preview"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="ReadBook"/>
 
         <Button
             android:id="@+id/googleMapBttn"
