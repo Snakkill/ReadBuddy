@@ -8,19 +8,17 @@
 
     <EditText
         android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_width="573dp"
+        android:layout_height="55dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="740dp"
+        android:layout_marginBottom="416dp"
         android:background="@drawable/ic_search_outline"
         android:hint="@string/find_a_book"
         android:inputType="text"
         android:padding="10dp"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -30,45 +28,45 @@
         android:fontFamily="serif"
         android:text="@string/find_your_next_read"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="60sp"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563" />
+        app:layout_constraintVertical_bias="0.616" />
 
     <HorizontalScrollView
         android:id="@+id/book_carousel"
-        android:layout_width="match_parent"
-        android:layout_height="279dp"
+        android:layout_width="0dp"
+        android:layout_height="235dp"
         android:layout_marginTop="70dp"
         android:background="@color/stone_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="0.448">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:id="@+id/linearLayout_carousel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:visibility="visible"></LinearLayout>
+
+            android:orientation="horizontal"></LinearLayout>
     </HorizontalScrollView>
 
     <Button
         android:id="@+id/idBtnSearch"
-        android:layout_width="178dp"
-        android:layout_height="82dp"
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/search"
-        android:textSize="24sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/book_carousel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintVertical_bias="0.212" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
