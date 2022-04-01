@@ -80,7 +80,7 @@
                     android:layout_height="57dp"
                     android:layout_gravity="top"
                     android:layout_margin="4dp"
-                    android:background="@color/cream"
+                    android:background="@color/white"
                     android:onClick="LookUpAmazon"
                     android:scaleType="centerCrop"
                     android:src="@drawable/amazon" />
