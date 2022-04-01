@@ -11,28 +11,42 @@
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/tv_rank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="10dp"
+    <TableLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:stretchColumns="0,1,2"
         android:padding="10dp"
-        android:text="N" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginRight="70dp"
-        android:text="John Doe" />
+        <TableRow>
+            <TextView
+                android:id="@+id/tv_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/rank_placeholder" />
 
-    <TextView
-        android:id="@+id/tv_points"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|right"
-        android:layout_marginRight="100dp"
-        android:text="4000 stars" />
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/name_placeholder"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:text="@string/point_placeholder" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_star"
+                app:tint="@color/stone_gray" />
+        </TableRow>
+    </TableLayout>
+
 </androidx.cardview.widget.CardView>

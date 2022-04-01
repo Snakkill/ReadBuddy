@@ -25,8 +25,8 @@
             android:id="@+id/idTVBookTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_toEndOf="@id/idIVbook"
+            android:fontFamily="serif"
             android:padding="3dp"
             android:text="Book Title"
             android:textAlignment="center"
@@ -35,31 +35,50 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/idIVbook"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.131" />
 
         <TextView
-            android:id="@+id/idTVPageCount"
+            android:id="@+id/idTVAuthor"
             android:layout_width="0dp"
-            android:layout_height="33dp"
+            android:layout_height="27dp"
             android:layout_toEndOf="@id/idIVbook"
+            android:fontFamily="serif"
             android:padding="3dp"
-            android:text="Page count"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:text="@string/author"
+            android:textColor="#9E000000"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/idIVbook"
-            app:layout_constraintTop_toBottomOf="@+id/idTVBookTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/idTVBookTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/idTVPageCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/idIVbook"
+            android:fontFamily="serif"
+            android:padding="3dp"
+            android:text="Page count"
+            android:textAlignment="center"
+            android:textColor="#9E000000"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/idIVbook"
+            app:layout_constraintTop_toBottomOf="@+id/idTVBookTitle"
+            app:layout_constraintVertical_bias="0.464" />
 
         <TextView
             android:id="@+id/idTVDate"
             android:layout_width="0dp"
             android:layout_height="21dp"
-            android:layout_below="@id/idTVPageCount"
+            android:layout_below="@id/idTVAuthor"
             android:layout_alignParentEnd="true"
             android:padding="3dp"
             android:text="date"
@@ -68,8 +87,10 @@
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/idIVbook"
-            app:layout_constraintTop_toBottomOf="@+id/idTVPageCount" />
+            app:layout_constraintTop_toBottomOf="@+id/idTVAuthor"
+            app:layout_constraintVertical_bias="0.777" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
