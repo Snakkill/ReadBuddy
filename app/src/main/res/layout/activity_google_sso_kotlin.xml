@@ -8,10 +8,10 @@
 
     tools:context=".Google_SSO_kotlin">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
-        android:layout_width="353dp"
-        android:layout_height="306dp"
+        android:layout_width="374dp"
+        android:layout_height="312dp"
         android:background="@drawable/ic_signin_bg"
         android:gravity="center"
         android:orientation="vertical"
@@ -27,28 +27,40 @@
             android:layout_height="wrap_content"
             android:background="#00E1D5C9"
             android:fontFamily="serif"
-            android:text="ReadBuddy"
+            android:text="@string/app_title"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/cream"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btnSignIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
-            android:padding="10dp" />
+            android:layout_width="249dp"
+            android:layout_height="84dp"
+            android:layout_marginBottom="24dp"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/loginBttn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/loginBttn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:onClick="startMain"
             android:padding="10dp"
-            android:text="Debug Login"
-            android:visibility="visible" />
+            android:text="@string/debug_login"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

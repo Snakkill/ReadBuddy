@@ -6,21 +6,32 @@
         <entry key="..\:/Users/955423/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/blank_fragment.xml" value="0.2572463768115942" />
         <entry key="..\:/Users/955423/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/leader_board_fragment.xml" value="0.2572463768115942" />
         <entry key="..\:/Users/955423/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/reading_list_fragment.xml" value="0.2572463768115942" />
-        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/activity_google_sso_kotlin.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout-land/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout-land/fragment_leaderboard.xml" value="0.13651181744091279" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout-land/fragment_reading_list.xml" value="0.21" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout-large-land/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout-large/activity_main.xml" value="0.12" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout-large/fragment_home.xml" value="0.17" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/activity_google_sso_kotlin.xml" value="0.25" />
         <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/activity_main.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/activity_search_results.xml" value="0.24070716228467814" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/book_rv_item.xml" value="0.5" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/carousel_item.xml" value="0.14" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/fragment_leaderboard.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/leaderboard_item.xml" value="0.25" />
+        <entry key="..\:/Users/tak45/AndroidStudioProjects/ReadBuddy/app/src/main/res/layout/rlist_item.xml" value="0.10546875" />
         <entry key="app/src/main/res/drawable/ic_baseline_error_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_book_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_book_details.xml" value="0.1308876811594203" />
         <entry key="app/src/main/res/layout/activity_google_sso.xml" value="0.15072326660156252" />
         <entry key="app/src/main/res/layout/activity_google_sso_kotlin.xml" value="0.14207916259765632" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.12364130434782608" />
-        <entry key="app/src/main/res/layout/book_rv_item.xml" value="0.31476449275362317" />
         <entry key="app/src/main/res/layout/fragment_leaderboard.xml" value="0.13385416666666666" />
-        <entry key="app/src/main/res/layout/rlist_item.xml" value="0.28020833333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

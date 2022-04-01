@@ -30,7 +30,8 @@ class BookAdapter
         // set data to each UI component.
         val bookInfo = bookInfoArrayList[position]
         holder.nameTV.text = bookInfo.title
-        holder.pageCountTV.text = "Pages : " + bookInfo.pageCount
+        holder.authorTV.text = bookInfo.authors[0]
+        holder.pageCountTV.text = bookInfo.pageCount.toString() + "Pages"
         holder.dateTV.text = bookInfo.publishedDate
         var imageUrl = bookInfo.thumbnail.drop(4)
         imageUrl = "https$imageUrl"
@@ -64,12 +65,14 @@ class BookAdapter
     inner class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // initialize text view and image views.
         var nameTV: TextView
+        var authorTV: TextView
         var pageCountTV: TextView
         var dateTV: TextView
         var bookIV: ImageView
 
         init {
             nameTV = itemView.findViewById(R.id.idTVBookTitle)
+            authorTV = itemView.findViewById(R.id.idTVAuthor)
             pageCountTV = itemView.findViewById(R.id.idTVPageCount)
             dateTV = itemView.findViewById(R.id.idTVDate)
             bookIV = itemView.findViewById(R.id.idIVbook)

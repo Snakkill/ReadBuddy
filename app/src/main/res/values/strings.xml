@@ -12,5 +12,11 @@
     <string name="search">Search</string>
     <string name="find_your_next_read">Find your next read</string>
     <string name="find_a_book">Find a book</string>
+    <string name="debug_login">Debug Login</string>
+    <string name="app_title">ReadBuddy</string>
+    <string name="author">Author</string>
+    <string name="name_placeholder">John Doe</string>
+    <string name="point_placeholder">4000</string>
+    <string name="rank_placeholder">N</string>
 
 </resources>
