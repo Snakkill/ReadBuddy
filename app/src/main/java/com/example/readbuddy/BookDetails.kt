@@ -74,9 +74,9 @@ class BookDetails : AppCompatActivity(), View.OnClickListener {
         // bind data to views
         titleTV.setText(title)
         subtitleTV.setText(subtitle)
-        publishDateTV.setText("Published On : $publishedDate")
+        publishDateTV.setText("Published in ${publishedDate!!.dropLast(6)}")
         descTV.setText(description)
-        pageTV.setText("No Of Pages : $pageCount")
+        pageTV.setText("$pageCount Pages")
 
         imageUrl = thumbnail!!.drop(4)
         imageUrl = "https$imageUrl"
