@@ -124,6 +124,20 @@
             android:textSize="19sp"
             android:textStyle="italic" />
 
+        <TextView
+            android:id="@+id/idTVAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="6dp"
+            android:paddingTop="2dp"
+            android:text="author"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="italic" />
+
 
         <!--Display Number of Pages-->
         <TextView

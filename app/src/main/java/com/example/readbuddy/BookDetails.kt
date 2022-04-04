@@ -53,6 +53,7 @@ class BookDetails : AppCompatActivity(), View.OnClickListener {
         val subtitleTV = findViewById<TextView>(R.id.idTVSubTitle)
         val descTV = findViewById<TextView>(R.id.idTVDescription)
         val pageTV = findViewById<TextView>(R.id.idTVNoOfPages)
+        val authorTV = findViewById<TextView>(R.id.idTVAuthor)
         val publishDateTV = findViewById<TextView>(R.id.idTVPublishDate)
         //val previewBtn = findViewById(R.id.idBtnPreview)
         val bookIV = findViewById<ImageView>(R.id.idIVbook)
@@ -76,6 +77,7 @@ class BookDetails : AppCompatActivity(), View.OnClickListener {
         subtitleTV.setText(subtitle)
         publishDateTV.setText("Published in ${publishedDate!!.dropLast(6)}")
         descTV.setText(description)
+        authorTV.text = author
         pageTV.setText("$pageCount Pages")
 
         imageUrl = thumbnail!!.drop(4)
